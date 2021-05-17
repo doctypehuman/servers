@@ -1,6 +1,7 @@
-# Servers
+# How To For Different Servers
 
-Welcome !!
+
+Hi There !!
 
 This repository has been created to document setup and administration of different servers. 
 
@@ -10,18 +11,13 @@ Also it would be wise to note that I am not an expert. Documentation here is pro
 
 The machine that is used for all servers is RHEL8.
 
+* [Apache](/servers/apache.md)
 
-How To For Different Servers
+* [Nginx](/servers/nginx.md)
 
+* [Mariadb](/servers/mariadb.md)
 
-## MariaDB
+* [Squid](/servers/squid.md)
 
-## Apache
-
-## DNS 
-
-## Email 
-
-## VPN 
-
+* [Post Fix](/servers/postfix.md)
 
