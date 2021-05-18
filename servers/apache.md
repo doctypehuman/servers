@@ -105,8 +105,43 @@ If you have multiple HTML files in the folder run the below command
 
 ### Configuring Name Based Virtual Hosts
 
+Name based virtual hosts enables Apache to serve different content for different domains that resolve to the IP address of the server.
+
+Entries for the different domains must be made in the DNS server for the procedure to succeed.
+
+We can configure it by making changes to the main configuration file or create a new conf file specific for the domain in `/etc/httpd/conf.d/` directory.
+
+To ease administration it is advised to create spearate configuration files in the `/etc/httpd/conf.d/` directory. The file created should have a `.conf` extension.
+
+In this particular instance I will share the contents of a separate configuration file for site1.example.com
+
+
+		<Directory /srv/site1/www>
+		Require all granted
+		Allow Override None
+		</Directory>
+
+
+		<VirtualHost *:80>
+		DocumentRoot /srv/site1/www
+		ServerName site1.example.com
+		ServerAdmin webmaster@site1.example.com
+		CustomLog /var/log/httpd/site1_access.log combined
+		ErrorLog /var/log/httpd_site1_error.log
+		</VirtualHost>
+
+
+In the above example since we have set a path of DocumentRoot which is not within `/var/www/` path we need to modify the SELinux context for the server to run.
+
+
 
 ### Configuring TLS encryption 
+
+TLS which stands for Transport Layer Security allows a client to verify the identify the identity of the server and optionally allows a server to do the same for a client.
+
+TLS is based on the concept of certificates.
+
+
 
 #### Adding TLS encryption
 
